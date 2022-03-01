@@ -19,8 +19,8 @@ def upload_file():
     if request.method == 'POST':
         file = request.files['file']
         filename = secure_filename(file.filename)
-        file.save("static/" + filename)
-        file = open("static/" + filename,"r")
+        file.save(filename)
+        file = open(filename,"r")
         model = load_model("Flower")
         img = Image.open(filename) #rose = 3, sunflower = 4, tulip 5
         img = img.resize((100,100))
