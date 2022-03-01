@@ -49,4 +49,5 @@ urllib3==1.26.8
 Werkzeug==2.0.3
 wrapt==1.13.3
 zipp==3.7.0
+pillow==9.0
 tensorflow-cpu
