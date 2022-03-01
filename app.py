@@ -11,17 +11,16 @@ from PIL import Image #use PIL
 import numpy as np
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = "static/"
+#app.config['UPLOAD_FOLDER'] = "static/"
 
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
         file = request.files['file']
-        print("File Received")
         filename = secure_filename(file.filename)
-        file.save(app.config['UPLOAD_FOLDER'] + filename)
-        file = open(app.config['UPLOAD_FOLDER'] + filename,"r")
+        file.save("static/" + filename)
+        file = open("static/" + filename,"r")
         model = load_model("Flower")
         img = Image.open(filename) #rose = 3, sunflower = 4, tulip 5
         img = img.resize((100,100))
